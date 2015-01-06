@@ -170,4 +170,14 @@ tags: [Software Design, Dependency Injection]
     </div>
     <div class="comment-date">2015-01-06 13:56 UTC</div>
   </div>
+  <div class="comment">
+    <div class="comment-author"><a href="http://www.kenneth-truyers.net">Kenneth Truyers</a></div>
+    <div class="comment-content">
+      <p>The advantage is that you can provide a single component to any type of application. There's no problem in instrumenting the DAL afterwards, you would just need to recompile the facade. </p>
+      <p>Indeed, you create a tightly coupled bundle, but you'd only do this when the whole bundle needs to be opaque. When the client just uses it as a package, it also doesn't need to know anything about instrumentation.</p>
+      <p>The same principle is actually very widely used. If you look at NuGet-packages, you see that often internally they use IoC, but externally they don't need to be wired up, since they wire everything up an then expose a single interface (a single conceptual interface, not a c#-interface per sé).</p>
+      <p>We can apply the same principle if the domain and DAL are frequently used together. It depends on the usage though. If in different applications you have different needs for instrumentation, then your article is 100% correct. However, if you know that all applications don't care about that and will always want the same behavior from the package, then you can wrap it up. (I'd even argue that in that case, you'd want to create a nuget package for it, but that's a separate issue)</p>
+    </div>
+    <div class="comment-date">2015-01-06 15:56 UTC</div>
+  </div>
 </div>
